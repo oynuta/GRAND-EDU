@@ -1,78 +1,390 @@
 <!doctype html>
-<div class="certs-panel">
-<form id="uploadForm" class="upload-form">
-<label class="file-label">
-<input id="fileInput" type="file" accept="image/*,application/pdf" multiple />
-<span>Fayl tanlang yoki ustiga torting (PNG, JPG, PDF)</span>
-</label>
-<div class="upload-actions">
-<button type="button" id="clearBtn" class="btn btn-ghost">Tozalash</button>
-<button type="button" id="exportBtn" class="btn small">Export JSON</button>
-</div>
-</form>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grand Edu - O'quv Markazi</title>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<div id="certList" class="cert-list" aria-live="polite"></div>
+  <style>
+    :root{
+      --accent:#4f46e5; /* indigo */
+      --accent-2:#06b6d4; /* teal */
+      --bg: #0f172a;
+      --card:#0b1220;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,#07080b 0%, #0b1220 100%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    /* Navbar */
+    .navbar{
+      backdrop-filter: blur(6px);
+      background: linear-gradient(90deg, rgba(15,23,42,0.55), rgba(7,10,20,0.35));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .brand-logo{
+      font-weight:800; letter-spacing: -0.5px; color:var(--accent);
+    }
+    /* Hero */
+    .hero{
+      padding: 6rem 0 4rem;
+      background-image: radial-gradient(circle at 10% 20%, rgba(79,70,229,0.12), transparent 8%), radial-gradient(circle at 90% 80%, rgba(6,182,212,0.08), transparent 8%);
+    }
+    .hero h1{font-size:2.4rem; font-weight:800}
+    .lead-custom{font-size:1.05rem; color: #cfe9ff}
 
+    /* cards */
+    .course-card{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03);}
+    .feature-icon{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
 
-<div class="uploader-note">
-<strong>Qayd:</strong> Hozircha fayllar sizning brauzeringizda saqlanadi (localStorage). Serverga yuborish kerak bo'lsa, men sizga Node/Express yoki PHP upload endpoint yozib beraman.
-</div>
-</div>
-</div>
-</section>
+    /* Testimonials */
+    .quote{font-style:italic;color:#cfe9ff}
 
+    /* Footer */
+    footer{padding:3rem 0;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
 
-<!-- ENROLL (RO'YXATDAN O'TISH) -->
-<section id="enroll" class="section alt">
-<div class="container">
-<h2 class="section-title">Ro'yxatdan o'tish</h2>
-<form class="enroll-form">
-<div class="grid-2">
-<input placeholder="Ism va Familiya" required />
-<input type="email" placeholder="Email" required />
-</div>
-<div class="grid-2">
-<input placeholder="Telefon" />
-<select>
-<option>Qaysi kursni tanlaysiz?</option>
-<option>Kids Coding</option>
-<option>IELTS Tayyorlov</option>
-<option>Web Dev Bootcamp</option>
-</select>
-</div>
-<textarea placeholder="Qo'shimcha izoh (ixtiyoriy)"></textarea>
-<div class="form-actions">
-<button class="btn btn-primary">Yuborish</button>
-</div>
-</form>
-</div>
-</section>
+    /* Responsive tweaks */
+    @media (min-width:992px){
+      .hero h1{font-size:3.2rem}
+    }
 
+    /* Buttons */
+    .btn-primary-custom{
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      border: none; box-shadow: 0 6px 18px rgba(79,70,229,0.16);
+    }
 
-<!-- CONTACT -->
-<section id="contact" class="section contact">
-<div class="container">
-<h2 class="section-title">Kontakt</h2>
-<p>Email: <a href="mailto:info@grandedu.uz">info@grandedu.uz</a> | Manzil: Xiva, Uzbekistan</p>
-</div>
-</section>
-</main>
+    /* Contact card */
+    .contact-card{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:1.6rem; border-radius:12px; border:1px solid rgba(255,255,255,0.03)}
 
+  </style>
+</head>
+<body>
 
-<footer class="site-footer">
-<div class="container footer-grid">
-<div>© GRAND EDU — Barcha huquqlar himoyalangan</div>
-<div class="socials">Developed with ❤️ by Oymonjon</div>
-</div>
-</footer>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <div class="brand-logo">Grand Edu</div>
+        <small class="text-muted">O'quv Markazi</small>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#">Bosh sahifa</a></li>
+          <li class="nav-item"><a class="nav-link" href="#courses">Kurslar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Haqida</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
+          <li class="nav-item ms-3"><a class="btn btn-primary-custom btn-sm" href="#contact">Ro'yxatdan o'tish</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1>Grand Edu bilan kelajagingizni bugun yarating</h1>
+          <p class="lead-custom">Python, Web Development, IELTS va yana ko'p sohalarda professional tayyorgarlik. Biz bilan osonroq, tezroq va ishonchli o'rganing.</p>
 
-<script src="js/main.js"></script>
+          <div class="d-flex gap-3 mt-4 flex-wrap">
+            <a href="#courses" class="btn btn-primary-custom btn-lg">Kurslarga nazar</a>
+            <a href="#about" class="btn btn-outline-light btn-lg">Biz haqimizda</a>
+          </div>
+
+          <div class="row mt-5 gy-3">
+            <div class="col-6 col-md-4">
+              <div class="p-3 contact-card">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="feature-icon">A</div>
+                  <div>
+                    <h6 class="mb-0">Nazoratli darslar</h6>
+                    <small class="text-muted">Haftalik progress</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="p-3 contact-card">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="feature-icon">T</div>
+                  <div>
+                    <h6 class="mb-0">Experienced o'qituvchilar</h6>
+                    <small class="text-muted">Amaliy ko'nikmalar</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="p-3 contact-card">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="feature-icon">R</div>
+                  <div>
+                    <h6 class="mb-0">Natijaga yo'naltirilgan</h6>
+                    <small class="text-muted">Nazorat va testlar</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-lg-5 d-none d-lg-block">
+          <div class="card course-card p-4 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" class="img-fluid rounded-3 mb-3" alt="Grand Edu">
+            <h5 class="mb-2">Yangi boshlovchilar uchun Web Development</h5>
+            <p class="small text-muted">HTML, CSS, JavaScript — 12 haftalik intensiv kurs. Amaliy loyihalar va mentorlik.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="badge bg-opacity-10" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03);">Boshlang'ich</span>
+              <a href="#contact" class="btn btn-sm btn-primary-custom">Ro'yxatdan o'tish</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Courses -->
+  <section id="courses" class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2>Kurslarimiz</h2>
+          <p class="text-muted">Texnologiya va til kurslari — har bir uchun tajribali yo'riqchi.</p>
+        </div>
+        <div>
+          <a href="#contact" class="btn btn-outline-light">Barchasini ko'rish</a>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card course-card h-100 p-4">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h5>Web Development</h5>
+                <p class="small text-muted mb-2">Frontend va backend asoslari</p>
+              </div>
+              <div class="text-end">
+                <h6 class="mb-0">12 hafta</h6>
+                <small class="text-muted">Amaliy loyiha</small>
+              </div>
+            </div>
+            <p class="mt-3">HTML, CSS, JavaScript, Bootstrap, Git — real portfolio loyihalari yaratiladi.</p>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <span class="badge" style="background:rgba(79,70,229,0.12); color:var(--accent)">Onlayn & Oflayn</span>
+              <a href="#contact" class="btn btn-sm btn-primary-custom">Ro'yxatdan o'tish</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card course-card h-100 p-4">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h5>Python & Data</h5>
+                <p class="small text-muted mb-2">Dasturlash va ma'lumot tahlili</p>
+              </div>
+              <div class="text-end">
+                <h6 class="mb-0">10 hafta</h6>
+                <small class="text-muted">Loyiha yo'nalishlari</small>
+              </div>
+            </div>
+            <p class="mt-3">Python, Pandas, ma'lumotlarni tahlil qilish va vizualizatsiya — amaliy mashg'ulotlar.</p>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <span class="badge" style="background:rgba(6,182,212,0.08); color:var(--accent-2)">Kamroq guruh</span>
+              <a href="#contact" class="btn btn-sm btn-primary-custom">Ro'yxatdan o'tish</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card course-card h-100 p-4">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h5>IELTS Tayyorlov</h5>
+                <p class="small text-muted mb-2">Listening, Reading, Writing, Speaking</p>
+              </div>
+              <div class="text-end">
+                <h6 class="mb-0">8 hafta</h6>
+                <small class="text-muted">Natijaga yo'naltirilgan</small>
+              </div>
+            </div>
+            <p class="mt-3">Yuqori natija uchun strategiyalar, real testlar va sinovlar.</p>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <span class="badge" style="background:rgba(255,193,7,0.08); color:#ffd54a">Bepul demo</span>
+              <a href="#contact" class="btn btn-sm btn-primary-custom">Ro'yxatdan o'tish</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-5 bg-transparent">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h3>Biz kimmiz?</h3>
+          <p class="text-muted">Grand Edu — bu zamonaviy ta'lim markazi. Biz nazariy bilimni amaliyot bilan uyg'unlashtiramiz. Har bir talabaga alohida e'tibor beramiz va ularning maqsadlariga yetishiga yordam beramiz.</p>
+
+          <ul class="list-unstyled mt-4">
+            <li class="mb-2"><strong>✅ Tajribali o'qituvchilar</strong> — soha mutaxassislari</li>
+            <li class="mb-2"><strong>✅ Amaliy yo'nalish</strong> — real loyihalar</li>
+            <li class="mb-2"><strong>✅ Sertifikat</strong> — kurs yakunida rasmiy sertifikat</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="card course-card p-4">
+            <h5>Maqsadimiz</h5>
+            <p class="small text-muted">Har bir o'quvchini zamonaviy ish bozoriga tayyorlash va ularni professional darajada rivojlantirish.</p>
+            <div class="mt-3">
+              <div class="progress" style="height:10px; background:rgba(255,255,255,0.03);">
+                <div class="progress-bar" role="progressbar" style="width:85%; background:linear-gradient(90deg,var(--accent),var(--accent-2));"></div>
+              </div>
+              <small class="text-muted">Amaliyotga yo'naltirilgan o'quv dasturi — 85% bajarildi</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-5">
+    <div class="container">
+      <h4>O'quvchilar fikri</h4>
+      <div class="row g-4 mt-3">
+        <div class="col-md-4">
+          <div class="card course-card p-4">
+            <p class="quote">"Grand Edu tufayli men web-sayt yaratishni o'rganib, amaliy portfolio tuzdim. O'qituvchilar juda mehribon va yordamchi."</p>
+            <div class="d-flex align-items-center mt-3">
+              <div class="rounded-circle bg-white text-dark d-flex align-items-center justify-content-center" style="width:44px;height:44px;">O</div>
+              <div class="ms-3">
+                <strong>Olim</strong><br><small class="text-muted">Frontend talaba</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card course-card p-4">
+            <p class="quote">"IELTS kursi menga listeningdagi strategiyalarni o'rgatdi — bahom 5.5 dan 7.0 ga oshdi!"</p>
+            <div class="d-flex align-items-center mt-3">
+              <div class="rounded-circle bg-white text-dark d-flex align-items-center justify-content-center" style="width:44px;height:44px;">R</div>
+              <div class="ms-3">
+                <strong>Roziya</strong><br><small class="text-muted">IELTS talaba</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card course-card p-4">
+            <p class="quote">"Mentorlar bilan haftalik mentor-sessiyalar juda foydali — haqiqiy natija ko'rdim."</p>
+            <div class="d-flex align-items-center mt-3">
+              <div class="rounded-circle bg-white text-dark d-flex align-items-center justify-content-center" style="width:44px;height:44px;">S</div>
+              <div class="ms-3">
+                <strong>Sardor</strong><br><small class="text-muted">Python talaba</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <h4>Biz bilan bog'laning</h4>
+          <p class="text-muted">Savollaringiz bormi? Quyidagi shaklni to'ldiring yoki telefon orqali murojaat qiling.</p>
+          <div class="card contact-card">
+            <form id="contactForm" onsubmit="submitForm(event)">
+              <div class="mb-3">
+                <label class="form-label">Ismingiz</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Telefon yoki Email</label>
+                <input type="text" class="form-control" id="contactInfo" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Qaysi kurs?</label>
+                <select class="form-select" id="courseChoice">
+                  <option>Web Development</option>
+                  <option>Python & Data</option>
+                  <option>IELTS</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="d-flex gap-3">
+                <button class="btn btn-primary-custom" type="submit">Yuborish</button>
+                <button class="btn btn-outline-light" type="reset">Tozalash</button>
+              </div>
+              <div id="formMsg" class="mt-3 small text-success" style="display:none">Xabaringiz qabul qilindi. Tez orada bog'lanamiz!</div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5>Manzilimiz</h5>
+          <p class="text-muted">Xiva shahri, Markaziy ko'cha 12 — Grand Edu o'quv markazi</p>
+          <p class="mb-1"><strong>Tel:</strong> +998 90 123 45 67</p>
+          <p><strong>Email:</strong> info@grandedu.uz</p>
+
+          <div class="card course-card p-3">
+            <h6 class="mb-2">Ish vaqti</h6>
+            <p class="small text-muted mb-0">Dushanba - Juma: 09:00 — 18:00<br>Shanba: 10:00 — 15:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="mb-0">&copy; <strong>Grand Edu</strong> — Barcha huquqlar himoyalangan.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <small class="text-muted">Ijtimoiy: <span class="mx-2">Facebook</span> <span class="mx-2">Telegram</span> <span class="mx-2">Instagram</span></small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const contactInfo = document.getElementById('contactInfo').value.trim();
+      if(!name || !contactInfo) return;
+      // Bu demo: haqiqiy serverga yuborish uchun fetch ishlatish kerak
+      document.getElementById('formMsg').style.display = 'block';
+      setTimeout(()=>{ document.getElementById('formMsg').style.display = 'none'; document.getElementById('contactForm').reset(); }, 3000);
+    }
+  </script>
 </body>
 </html>
-
-
-
-
-
