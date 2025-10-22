@@ -1,0 +1,78 @@
+<!doctype html>
+<div class="certs-panel">
+<form id="uploadForm" class="upload-form">
+<label class="file-label">
+<input id="fileInput" type="file" accept="image/*,application/pdf" multiple />
+<span>Fayl tanlang yoki ustiga torting (PNG, JPG, PDF)</span>
+</label>
+<div class="upload-actions">
+<button type="button" id="clearBtn" class="btn btn-ghost">Tozalash</button>
+<button type="button" id="exportBtn" class="btn small">Export JSON</button>
+</div>
+</form>
+
+
+<div id="certList" class="cert-list" aria-live="polite"></div>
+
+
+<div class="uploader-note">
+<strong>Qayd:</strong> Hozircha fayllar sizning brauzeringizda saqlanadi (localStorage). Serverga yuborish kerak bo'lsa, men sizga Node/Express yoki PHP upload endpoint yozib beraman.
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- ENROLL (RO'YXATDAN O'TISH) -->
+<section id="enroll" class="section alt">
+<div class="container">
+<h2 class="section-title">Ro'yxatdan o'tish</h2>
+<form class="enroll-form">
+<div class="grid-2">
+<input placeholder="Ism va Familiya" required />
+<input type="email" placeholder="Email" required />
+</div>
+<div class="grid-2">
+<input placeholder="Telefon" />
+<select>
+<option>Qaysi kursni tanlaysiz?</option>
+<option>Kids Coding</option>
+<option>IELTS Tayyorlov</option>
+<option>Web Dev Bootcamp</option>
+</select>
+</div>
+<textarea placeholder="Qo'shimcha izoh (ixtiyoriy)"></textarea>
+<div class="form-actions">
+<button class="btn btn-primary">Yuborish</button>
+</div>
+</form>
+</div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+<div class="container">
+<h2 class="section-title">Kontakt</h2>
+<p>Email: <a href="mailto:info@grandedu.uz">info@grandedu.uz</a> | Manzil: Xiva, Uzbekistan</p>
+</div>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<div class="container footer-grid">
+<div>© GRAND EDU — Barcha huquqlar himoyalangan</div>
+<div class="socials">Developed with ❤️ by Oymonjon</div>
+</div>
+</footer>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
