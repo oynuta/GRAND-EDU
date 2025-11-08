@@ -1,10 +1,12 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"name": "Node.JS",
+			"path": "../../Node.JS"
 		},
 		{
-			"path": "../../Node.JS"
+			"name": "GRAND-EDU",
+			"path": "."
 		}
 	],
 	"settings": {
