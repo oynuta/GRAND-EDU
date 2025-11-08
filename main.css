@@ -1,0 +1,8 @@
+/* TEACHERS */
+.teacher-photo { 
+    width: 140px; 
+    height: 140px; 
+    border-radius: 14px; 
+    object-fit: cover; 
+    border: 3px solid rgba(74,158,255,0.12); 
+}

@@ -67,6 +67,14 @@
       background: linear-gradient(90deg,var(--accent),var(--accent-2));
       color:#fff; border-radius:999px; padding:12px 26px; font-weight:700;
       box-shadow: 0 12px 30px rgba(74,158,255,0.18);
+      border: none;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(74,158,255,0.25);
+      color: #fff;
     }
 
     /* LAYOUT */
@@ -94,6 +102,17 @@
 
     /* TEACHERS */
     .teacher-photo{ width:92px; height:92px; border-radius:14px; object-fit:cover; border:3px solid rgba(74,158,255,0.12); }
+    
+    /* Custom card styles for teachers section */
+    .bg-gray-50 { background-color: #f9fafb; }
+    .text-3xl { font-size: 1.875rem; }
+    .font-bold { font-weight: 700; }
+    .text-gray-600 { color: #6b7280; }
+    .text-gray-700 { color: #374151; }
+    .small { font-size: 0.875rem; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+    .shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
 
     /* FACILITIES */
     .facility{
@@ -136,10 +155,20 @@
     @media (max-width:768px){
       .hero h1{ font-size:1.8rem; }
       .teacher-photo{ width:76px; height:76px; }
+      .hero { padding: 90px 0 60px; }
     }
 
     /* small helpers */
     .muted{ color:var(--muted); font-weight:500; }
+    
+    /* Fix for navbar toggler */
+    .navbar-toggler {
+      border: none;
+      padding: 4px 8px;
+    }
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
   </style>
 </head>
 <body>
@@ -161,9 +190,8 @@
         <ul class="navbar-nav align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="#home">Bosh sahifa</a></li>
           <li class="nav-item"><a class="nav-link" href="#courses">Kurslar</a></li>
-          <li class="nav-item"><a class="nav-link" href="#teachers">O‘qituvchilar</a></li>
-          <li class="nav-item"><a class="nav-link" href="#certificates">Sertifikatlar</a></li>
-     
+          <li class="nav-item"><a class="nav-link" href="#teachers">O'qituvchilar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#results">Natijalar</a></li>
           <li class="nav-item ms-3"><a class="btn btn-sm btn-cta" href="#contact">Murojaat</a></li>
         </ul>
       </div>
@@ -176,104 +204,76 @@
       <div class="kicker">Grand-Edu o'quv markazi</div>
       <h1>Khiva Math</h1>
       <p class="lead"> MATEMATIKAni biz bilan chuqur oʻrganib oligohlarga grant asosida talaba boʻling.</p>
-      <div class="d-flex justify-content-center gap-3 mt-4">
-        <a class="btn btn-cta" href="#courses">Kurslarimizni ko‘rish</a>
+      <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+        <a class="btn btn-cta" href="#courses">Kurslarimizni ko'rish</a>
         
       </div>
     </div>
   </header>
 
-  <!-- COURSES -->
-  <section id="courses">
-    <div class="container">
-      <div class="row align-items-center mb-4">
-        <div class="col-lg-6" data-aos="fade-right">
-          <h2 class="mb-2">Bizning kurslar va dasturlar</h2>
-         
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="container">
+    <div class="row align-items-center mb-4">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h2 class="mb-2">Bizning kurslar va dasturlar</h2>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- card 1 -->
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+        <div class="card-modern course-card h-100">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="mb-1">To'plam_1996-2007 boshidan boshlamoqchi bo'lganlar uchun</h5>
+            </div>
+          </div>
         </div>
-        
       </div>
 
-      <div class="row g-4">
-        <!-- card 1 -->
-        <div class="col-md-6 col-lg-4" data-aos="zoom-in">
-          <div class="card-modern course-card h-100">
-            <div class="d-flex justify-content-between align-items-start">
-              <div>
-                <h5 class="mb-1">To'plam_1996-2007 boshidan boshlamoqchi bo'lganlar uchun</h5>
-                
-              </div>
-              
-              
+      <!-- card 2 -->
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="80">
+        <div class="card-modern course-card h-100">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="mb-1">Nol dan o'rganuvchi o'quvchilar uchun</h5>
             </div>
-
-            <p class="mt-3 muted">Asosiy algebra, funksiya tushunchalari va masalalar yechish metodlari. Interaktiv mashg‘ulotlar va uy vazifalari.</p>
-
-            
           </div>
         </div>
+      </div>
 
-        <!-- card 2 -->
-        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="80">
-          <div class="card-modern course-card h-100">
-            <div class="d-flex justify-content-between align-items-start">
-              <div>
-                <h5 class="mb-1">NOL dan o'rganuvchi o'quvchilar uchun</h5>
-               
-              </div>
+      <!-- card 3 -->
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="160">
+        <div class="card-modern course-card h-100">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="mb-1">Sertifikat guruhlar</h5>
               
+              <div class="muted">Milliy sertifikat DEKABR oyi uchun</div>
+              <div class="muted">Milliy sertifikat FEVRAL oyi uchun</div>
             </div>
-
-            <p class="mt-3 muted">Masalaning chuqur tahlili, kombinatorika, geometriya va algebraik strategiyalar. Mashqlar va real testlar.</p>
-
-           
-          </div>
-        </div>
-
-        <!-- card 3 -->
-        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="160">
-          <div class="card-modern course-card h-100">
-            <div class="d-flex justify-content-between align-items-start">
-              <div>
-                <h5 class="mb-1">Sertifikat guruhlar</h5>
-                <div class="muted">Milliy sertifikat OKTABR oyi uchun  
-
-
-                  ✅Milliy sertifikat DEKABR oyi uchun 
-
-
-                  ✅Milliy sertifikat FEVRAL oyi uchun 
-
-                </div>
-              </div>
-              
-            </div>
-
-            
-
-            
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  
-            
-          <!-- O'qituvchilarimiz bo'limi -->
+  </div>
+</section>
+      
+<!-- O'qituvchilarimiz bo'limi -->
 <section id="teachers" class="py-5 bg-gray-50">
   <div class="container">
     <div class="text-center mb-5">
       <h2 class="text-3xl font-bold">O'qituvchilarimiz</h2>
-      <p class="text-gray-600">Har biri bilan individual mashg‘ulot va feedback.</p>
+      <p class="text-gray-600">Har biri bilan individual mashg'ulot va feedback.</p>
     </div>
 
     <div class="row g-4 justify-content-center">
-
       <!-- O'qituvchi 1 -->
       <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg p-4 text-center">
-          <img src="photo_2025-10-23_13-30-54.jpg" class="mb-3 rounded-lg shadow" alt="Sadulla Otayev Sertifikati">
+        <div class="card shadow-sm rounded-lg p-4 text-center h-100">
+          <img src="photo_2025-10-23_13-30-54.jpg" class="mb-3 rounded-lg shadow teacher-photo mx-auto" alt="Sadulla Otayev Sertifikati" style="width: 140px; height: 140px; object-fit: cover; border-radius: 14px; border: 3px solid rgba(74,158,255,0.12);">
           <h5 class="card-title font-bold mb-2">Sadulla Otayev</h5>
           <p class="text-gray-700 small">
             "GRAND EDU KHIVA" o'quv markazi asoschisi va 2020-yildan beri MATEMATIKA fanidan ripetitorlik faoliyatini olib kelayotgan ustoz! MILLIY SERTIFIKAT imtihonida 5 marta qatnashib barchasida 100 % lik [A+] daraja sohibi.
@@ -283,186 +283,157 @@
 
       <!-- O'qituvchi 2 -->
       <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg p-4 text-center">
-          <img src="photo_2025-10-23_11-32-46.jpg" class="mb-3 rounded-lg shadow" alt="Xayrulla Otaboyev Sertifikati">
+        <div class="card shadow-sm rounded-lg p-4 text-center h-100">
+          <img src="photo_2025-10-23_11-32-46.jpg" class="mb-3 rounded-lg shadow teacher-photo mx-auto" alt="Xayrulla Otaboyev Sertifikati" style="width: 140px; height: 140px; object-fit: cover; border-radius: 14px; border: 3px solid rgba(74,158,255,0.12);">
           <h5 class="card-title font-bold mb-2">Xayrulla Otaboyev</h5>
           <p class="text-gray-700 small">
             Matematika fani o'qituvchisi, o'quv markazimizda 2021-yildan buyon ripetitorlik faoliyatini olib kelayotgan ustoz! MILLIY SERTIFIKAT natijasi 100 % lik A daraja sohib.
           </p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-    
 
-    
-
-
-  
-
-  
-
-<!-- CERTIFICATES & SUCCESS -->
-<section id="certificates" style="background:linear-gradient(180deg, rgba(255,255,255,0.9), transparent);">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h3>O'quvchilarimiz natijalari</h3>
-      <small class="muted">Ajoyib natijalar — biz bilan!</small>
-    </div>
-
-    <div class="row g-4 cert-grid" id="certGrid" data-aos="zoom-in">
-      <!-- JS orqali qo'shiladi -->
-    </div>
-  </div>
-</section>
-
-<!-- O'quvchilarimiz natijalari -->
-<section id="results" class="py-5 bg-gray-50">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="text-3xl font-bold">O'quvchilarimiz natijalari</h2>
-      <p class="text-gray-600">Bizning ajoyib o‘quvchilarimizning so‘nggi yutuqlari</p>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="Dilnura.jpg" class="card-img-top" alt="Natija 1">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat B+ 92%</h5>
-          </div>
-        </div>
+  <!-- O'quvchilarimiz natijalari -->
+  <section id="results" class="py-5 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="text-3xl font-bold">O'quvchilarimiz natijalari</h2>
+        <p class="text-gray-600">Bizning ajoyib o'quvchilarimizning so'nggi yutuqlari</p>
       </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="Jasurbek.jpg" class="card-img-top" alt="Natija 2">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat B+ 98,77%</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="Tolibjon1.jpg" class="card-img-top" alt="Natija 3">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat A 100%</h5>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7 ta boshqa natijalar shu tarzda -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="Zuhra.jpg" class="card-img-top" alt="Natija 4">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat C 71.94%</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="Shaxzoda.jpg" class="card-img-top" alt="Natija 5">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat C 76.51%</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="Shaqriya.jpg" class="card-img-top" alt="Natija 6">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat B 86.72%</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="Tolibjon.jpg" class="card-img-top" alt="Natija 7">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat B 89.54%</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="Jaurbek.jpg" class="card-img-top" alt="Natija 8">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat C 75.06%</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="Otaboy.jpg" class="card-img-top" alt="Natija 9">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat C 73.08%</h5>
-          </div>
-        </div>
-      </div>
+      <div class="row g-4">
         <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="zilolab+.jpg" class="card-img-top" alt="Natija 9">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat B+ 93.78%</h5>
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="Dilnura.jpg" class="card-img-top" alt="Natija 1">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat B+ 92%</h5>
+            </div>
           </div>
         </div>
-      </div>
-       <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="shabnamb.jpg" class="card-img-top" alt="Natija 9">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat B 88.91%</h5>
-          </div>
-        </div>
-      </div>
-       <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="mashurac+.jpg" class="card-img-top" alt="Natija 9">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat C+ 82.78%</h5>
-          </div>
-        </div>
-      </div>
-     
-  <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="shahzodac+.jpg" class="card-img-top" alt="Natija 9">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat C 79.97%</h5>
-          </div>
-        </div>
-      </div>
+
         <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm rounded-lg overflow-hidden">
-          <img src="mohirac+.jpg" class="card-img-top" alt="Natija 9">
-          <div class="card-body">
-            <h5 class="card-title">Matematika Milliy Sertifikat C 79.22%</h5>
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="Jasurbek.jpg" class="card-img-top" alt="Natija 2">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat B+ 98,77%</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="Tolibjon1.jpg" class="card-img-top" alt="Natija 3">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat A 100%</h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 ta boshqa natijalar shu tarzda -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="Zuhra.jpg" class="card-img-top" alt="Natija 4">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat C 71.94%</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="Shaxzoda.jpg" class="card-img-top" alt="Natija 5">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat C 76.51%</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="Shaqriya.jpg" class="card-img-top" alt="Natija 6">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat B 86.72%</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="Tolibjon.jpg" class="card-img-top" alt="Natija 7">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat B 89.54%</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="Jaurbek.jpg" class="card-img-top" alt="Natija 8">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat C 75.06%</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="Otaboy.jpg" class="card-img-top" alt="Natija 9">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat C 73.08%</h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="zilolab+.jpg" class="card-img-top" alt="Natija 10">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat B+ 93.78%</h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="shabnamb.jpg" class="card-img-top" alt="Natija 11">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat B 88.91%</h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="mashurac+.jpg" class="card-img-top" alt="Natija 12">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat C+ 82.78%</h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="shahzodac+.jpg" class="card-img-top" alt="Natija 13">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat C 79.97%</h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm rounded-lg overflow-hidden">
+            <img src="mohirac+.jpg" class="card-img-top" alt="Natija 14">
+            <div class="card-body">
+              <h5 class="card-title">Matematika Milliy Sertifikat C 79.22%</h5>
+            </div>
           </div>
         </div>
       </div>
-     
-
-     
-
-
-
-
     </div>
-  </div>
-</section>
-
-
-  
+  </section>
 
   <!-- YOUTUBE VIDEO LESSONS -->
   <section id="videos">
@@ -474,6 +445,39 @@
 
       <div id="ytList" class="row g-3">
         <!-- video list populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="text-3xl font-bold">Bog'lanish</h2>
+        <p class="text-gray-600">Biz bilan bog'laning va bepul konsultatsiya oling</p>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card shadow-sm rounded-lg p-4">
+            <h4 class="mb-4">Ma'lumot qoldiring</h4>
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Ismingiz</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Telefon raqamingiz</label>
+                <input type="tel" class="form-control" id="phone" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Xabar</label>
+                <textarea class="form-control" id="message" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-cta w-100">Yuborish</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -529,11 +533,31 @@
     // fill dynamic year
     document.getElementById('year').innerText = new Date().getFullYear();
 
+    // Teacher data
+    const teachers = [
+      {
+        id: 0,
+        name: "Sadulla Otayev",
+        photo: "photo_2025-10-23_13-30-54.jpg",
+        role: "Asoschi, Matematika o'qituvchisi",
+        bio: "GRAND EDU KHIVA o'quv markazi asoschisi va 2020-yildan beri MATEMATIKA fanidan ripetitorlik faoliyatini olib kelayotgan ustoz! MILLIY SERTIFIKAT imtihonida 5 marta qatnashib barchasida 100 % lik [A+] daraja sohibi.",
+        tg: "@sadulla_otayev"
+      },
+      {
+        id: 1,
+        name: "Xayrulla Otaboyev",
+        photo: "photo_2025-10-23_11-32-46.jpg",
+        role: "Matematika o'qituvchisi",
+        bio: "Matematika fani o'qituvchisi, o'quv markazimizda 2021-yildan buyon ripetitorlik faoliyatini olib kelayotgan ustoz! MILLIY SERTIFIKAT natijasi 100 % lik A daraja sohib.",
+        tg: "@xayrulla_otaboyev"
+      }
+    ];
+
     function openTeacher(id){
       const t = teachers[id];
       document.getElementById('teacherModalTitle').innerText = t.name;
       document.getElementById('teacherModalBody').innerHTML = `
-        <div class="d-flex gap-4">
+        <div class="d-flex gap-4 flex-column flex-md-row">
           <img src="${t.photo}" onerror="this.src='https://via.placeholder.com/160'" style="width:160px; height:160px; object-fit:cover; border-radius:12px;">
           <div>
             <h5>${t.role}</h5>
@@ -541,7 +565,7 @@
             <p><strong>Telegram:</strong> <a href="https://t.me/${t.tg.replace('@','')}" target="_blank">${t.tg}</a></p>
             <div class="mt-3">
               <button class="btn btn-cta btn-sm" onclick="showYT('https://www.youtube.com/watch?v=dQw4w9WgXcQ','${t.name} darslari')">YouTube darslar</button>
-              <a class="btn btn-outline-secondary btn-sm ms-2" href="#contact">Ro‘yxatdan o‘tish</a>
+              <a class="btn btn-outline-secondary btn-sm ms-2" href="#contact">Ro'yxatdan o'tish</a>
             </div>
           </div>
         </div>
@@ -558,6 +582,7 @@
       const modal = new bootstrap.Modal(document.getElementById('ytModal'));
       modal.show();
     }
+    
     function extractYT(url){
       try{
         const u = new URL(url);
@@ -575,6 +600,7 @@
       { title: "ATTESTATSIYA_2025 imtihon savolining yechimi!", url: "https://www.youtube.com/watch?v=1ZfMlxVseNY&list=PLKfWdQtJb-oboF_OF2Le7MMY6P6RDdg6-" },
       { title: "1,2,3 kitoblar bo'yicha darsliklar", url: "https://www.youtube.com/watch?v=914arSmP9Yo&list=PLKfWdQtJb-obCkkR4v_wL7GqlQSvpPeOn" }
     ];
+    
     function renderYT(){
       const c = document.getElementById('ytList');
       c.innerHTML = ytLessons.map((v,i)=>`
@@ -597,7 +623,12 @@
     }
     renderYT();
 
-  
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Xabaringiz qabul qilindi! Tez orada siz bilan bog\'lanamiz.');
+      this.reset();
+    });
   </script>
 </body>
 </html>
