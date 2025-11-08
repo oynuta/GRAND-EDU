@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Node.JS"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "GRAND-EDU"
+	}
+}
