@@ -645,27 +645,39 @@
     ];
 
 
-    function renderYT(){
-      const c = document.getElementById('ytList');
-      c.innerHTML = ytLessons.map((v,i)=>`
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="${i*80}">
-          <div class="card-modern yt-thumb h-100">
-            <div style="position:relative; padding-bottom:56.25%; height:0;">
-              <iframe src="https://www.youtube.com/embed/${extractYT(v.url)}" style="position:absolute;left:0;top:0;width:100%;height:100%;" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="mt-2">
-              <strong>${v.title}</strong>
-              <div class="muted mt-1 small">${v.url}</div>
-              <div class="mt-2 d-flex gap-2">
-                <button class="btn btn-sm btn-cta" onclick="showYT('${v.url}','${v.title}')">Tomosha qilish</button>
-                <a class="btn btn-sm btn-outline-secondary" href="${v.url}" target="_blank">YouTube sahifasi</a>
-              </div>
+  function renderYT(){
+  const c = document.getElementById('ytList');
+  c.innerHTML = ytLessons.map((v,i)=>`
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="${i*100}">
+      <div class="card youtube-card h-100">
+        <div class="yt-thumbnail">
+          <iframe src="https://www.youtube.com/embed/${extractYT(v.url)}" 
+                  title="${v.title}" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+          </iframe>
+          <div class="play-overlay">
+            <div class="play-icon">
+              <i class="fab fa-youtube"></i>
             </div>
           </div>
         </div>
-      `).join('');
-    }
-    renderYT();
+        <div class="youtube-card-body">
+          <h5 class="youtube-card-title">${v.title}</h5>
+          <p class="youtube-card-description">Matematika bo'yicha tushunarli va batafsil dars</p>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-sm btn-primary" onclick="showYT('${v.url}','${v.title}')">
+              <i class="fas fa-play me-1"></i> Tomosha qilish
+            </button>
+            <a class="btn btn-sm btn-outline-secondary" href="${v.url}" target="_blank">
+              <i class="fab fa-youtube me-1"></i> YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
 
     // Contact form submission
     document.getElementById('contactForm').addEventListener('submit', function(e) {
