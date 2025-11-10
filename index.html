@@ -475,8 +475,7 @@
     <div class="container">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>YouTube darslarimiz</h3>
-        <small class="muted">Har bir dars uchun link va qisqacha izoh.</small>
-      </div>
+       
 
       <div id="ytList" class="row g-3">
         <!-- video list populated by JS -->
@@ -631,11 +630,12 @@
 
     // YOUTUBE LIST (sample)
     const ytLessons = [
-      { title: "To'plam 1996-2007 yechimlari", url: "https://www.youtube.com/watch?v=h1Kj0w5Bh2U&list=PLKfWdQtJb-oYz4la8icidqoKsH92BduBS" },
-      { title: "ATTESTATSIYA_2025 imtihon savolining yechimi!", url: "https://www.youtube.com/watch?v=1ZfMlxVseNY&list=PLKfWdQtJb-oboF_OF2Le7MMY6P6RDdg6-" },
-      { title: "1,2,3 kitoblar bo'yicha darsliklar", url: "https://www.youtube.com/watch?v=914arSmP9Yo&list=PLKfWdQtJb-obCkkR4v_wL7GqlQSvpPeOn" }
+      { title: "1,2,3 kitoblar bo'yicha darsliklar", url: "https://www.youtube.com/watch?v=914arSmP9Yo&list=PLKfWdQtJb-obCkkR4v_wL7GqlQSvpPeOn" },
+      { title: "To'plam 1996-2007 yechimlari", url: "    https://www.youtube.com/watch?v=h1Kj0w5Bh2U&list=PLKfWdQtJb-oYz4la8icidqoKsH92BduBS" },
+      { title: "Attestasiya", url: "    https://www.youtube.com/watch?v=1ZfMlxVseNY&list=PLKfWdQtJb-oboF_OF2Le7MMY6P6RDdg6-" }
     ];
-    
+
+
     function renderYT(){
       const c = document.getElementById('ytList');
       c.innerHTML = ytLessons.map((v,i)=>`
