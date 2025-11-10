@@ -6,15 +6,18 @@
     object-fit: cover; 
     border: 3px solid rgba(74,158,255,0.12); 
 }
-/* YOUTUBE SECTION */
+/* YOUTUBE SECTION *//* YOUTUBE SECTION */
 .youtube-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   height: 100%;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 .youtube-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 .yt-thumbnail {
   position: relative;
@@ -57,18 +60,38 @@
   color: #ff0000;
   font-size: 24px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+.yt-thumbnail:hover .play-icon {
+  transform: scale(1.1);
 }
 .youtube-card-body {
-  padding: 1.25rem;
+  padding: 1.5rem;
+  background: var(--card);
 }
 .youtube-card-title {
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
   line-height: 1.4;
+  color: #0f1b2a;
 }
 .youtube-card-description {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Katta ekranlarda 2 ta video, kichik ekranlarda 1 ta */
+@media (min-width: 768px) {
+  #ytList .col-md-6 {
+    max-width: 540px; /* Kartochkalarni kengroq qilish */
+  }
+}
+
+@media (min-width: 992px) {
+  #ytList .col-lg-6 {
+    max-width: 500px; /* Yana kengroq qilish */
+  }
 }
