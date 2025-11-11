@@ -23,7 +23,7 @@
       --glass: rgba(255,255,255,0.6);
       --radius:16px;
     }
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;}
     body{
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: radial-gradient(1200px 600px at 10% 10%, rgba(138,215,255,0.08), transparent 8%),
@@ -105,7 +105,7 @@
       padding:22px;
     }
 
-    /* ADMIN PANEL */
+/* ADMIN PANEL */
     .admin-panel {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
@@ -179,7 +179,7 @@
     .certificate-img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Changed from contain to cover to remove white spaces */
+      object-fit: cover;
       background: white;
     }
     .certificate-badge {
@@ -209,14 +209,14 @@
     }
     .teacher-img-container {
       width: 100%;
-      height: 320px; /* Increased height for better photo display */
+      height: 320px;
       overflow: hidden;
       position: relative;
     }
     .teacher-img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Cover entire container */
+      object-fit: cover;
       transition: transform 0.3s ease;
     }
     .teacher-card:hover .teacher-img {
@@ -261,7 +261,7 @@
     .navbar-toggler { border: none; padding: 4px 8px; }
     .navbar-toggler:focus { box-shadow: none; }
 
-    /* Footer social icons */
+/* Footer social icons */
     .footer-social {
       display: flex;
       justify-content: center;
@@ -307,7 +307,7 @@
           <li class="nav-item"><a class="nav-link" href="#teachers">O'qituvchilar</a></li>
           <li class="nav-item"><a class="nav-link" href="#results">Natijalar</a></li>
           <li class="nav-item"><a class="nav-link" href="#admin">Admin</a></li>
-          <li class="nav-item ms-3"><a class="btn btn-sm btn-cta" href="#contact">Murojaat</a></a></li>
+          <li class="nav-item ms-3"><a class="btn btn-sm btn-cta" href="#contact">Murojaat</a></li>
         </ul>
 
         <!-- Social Media Icons for Mobile -->
@@ -363,7 +363,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="160">
+<div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="160">
           <div class="card-modern course-card h-100">
             <div class="d-flex justify-content-between align-items-start">
               <div>
@@ -391,10 +391,9 @@
         <div class="col-md-6 col-lg-5" data-aos="fade-up">
           <div class="card teacher-card shadow-sm">
             <div class="teacher-img-container">
-              <img src="teachers.jpg" class="teacher-img" alt="Sadulla Otayev" onerror="this.src='https://via.placeholder.com/400x320/4a9eff/ffffff?text=Sadulla+Otayev'">
-              <div class="teacher-overlay">
+<img src="teachers.jpg" class="teacher-img" alt="Sadulla Otayev" onerror="this.src='https://via.placeholder.com/400x320/4a9eff/ffffff?text=Sadulla+Otayev%27'">              <div class="teacher-overlay">
                 <h5 class="mb-1">Sadulla Otayev</h5>
-                <p class="mb-0">Asoschi, Matematika o'qituvchisi</p>
+                <p class="mb-0">Matematika o'qituvchisi</p>
               </div>
             </div>
             <div class="card-body text-center p-4">
@@ -448,7 +447,7 @@
     <div class="container">
       <div class="text-center mb-5">
         <h2 class="mb-3">O'quvchilarimiz natijalari</h2>
-        <p class="text-muted">Bizning ajoyib o'quvchilarimizning so'nggi yutuqlari</p>
+        <p class="text-muted">Bizning faxrli o'quvchilarimizning so'nggi yutuqlari</p>
       </div>
 
       <div id="certificatesGrid" class="row g-4">
@@ -456,8 +455,8 @@
       </div>
     </div>
   </section>
-
-  <!-- ADMIN PANEL - PROTECTED -->
+  
+<!-- ADMIN PANEL - PROTECTED -->
   <section id="admin" class="py-5 bg-light">
     <div class="container">
       <div class="text-center mb-5">
@@ -546,7 +545,7 @@
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
+<!-- CONTACT SECTION -->
   <section id="contact" class="py-5">
     <div class="container">
       <div class="text-center mb-5">
@@ -578,6 +577,106 @@
       </div>
     </div>
   </section>
+  
+   
+<!-- YOUTUBE VIDEO LESSONS -->
+<section id="videos" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="mb-3">YouTube darslarimiz</h2>
+      <p class="text-muted">Bizning bepul matematika dars videolari</p>
+    </div>
+
+    <div id="ytList" class="row justify-content-center g-4">
+      <!-- video list populated by JS -->
+    </div>
+    
+    <div class="text-center mt-5">
+      <a href="https://www.youtube.com/@GrandEdu_Khiva" target="_blank" class="btn btn-outline-primary">
+        <i class="fab fa-youtube me-2"></i>YouTube kanalimizga obuna bo'ling
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="ytModal" tabindex="-1" aria-labelledby="ytTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ytTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="ytBody"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Extracts only the video ID from a YouTube URL
+  function extractYT(url){
+    try{
+      const u = new URL(url.trim());
+      // Short youtu.be URL
+      if(u.hostname.includes('youtu.be')) return u.pathname.slice(1);
+      // Standard YouTube URL
+      if(u.searchParams.get('v')) return u.searchParams.get('v');
+      // Fallback: get last part of path
+      const seg = u.pathname.split('/').pop();
+      return seg || null;
+    }catch(e){ 
+      return null; 
+    }
+  }
+
+  // Show modal with video
+  function showYT(url, title){
+    const videoId = extractYT(url);
+    document.getElementById('ytTitle').innerText = title + ' Dars';
+    document.getElementById('ytBody').innerHTML = videoId
+      ? `<div style="position:relative;padding-bottom:56.25%;height:0">
+           <iframe src="https://www.youtube.com/embed/${videoId}" style="position:absolute;left:0;top:0;width:100%;height:100%;" frameborder="0" allowfullscreen></iframe>
+         </div>`
+      : `<a href="${url}" target="_blank">Video link</a>`;
+    const modal = new bootstrap.Modal(document.getElementById('ytModal'));
+    modal.show();
+  }
+
+  // List of lessons
+  const ytLessons = [
+    { title: "1,2,3 kitoblar bo'yicha darsliklar", url: "https://www.youtube.com/watch?v=914arSmP9Yo&list=PLKfWdQtJb-obCkkR4v_wL7GqlQSvpPeOn" },
+    { title: "To'plam 1996-2007 yechimlari", url: "https://www.youtube.com/watch?v=h1Kj0w5Bh2U&list=PLKfWdQtJb-oYz4la8icidqoKsH92BduBS" },
+    { title: "Milliy sertifikat", url: "https://www.youtube.com/watch?v=aODGxYAxgdQ&list=PLKfWdQtJb-oYW5iO4JdoosqXDkvPKR9bE" },
+    { title: "Attestasiya", url: "https://www.youtube.com/watch?v=1ZfMlxVseNY&list=PLKfWdQtJb-oboF_OF2Le7MMY6P6RDdg6-" },
+  ];
+
+  // Render YouTube lessons dynamically
+  function renderYT(){
+    const c = document.getElementById('ytList');
+    c.innerHTML = ytLessons.map((v,i)=>`
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="${i*80}">
+        <div class="card-modern yt-thumb h-100">
+          <div style="position:relative; padding-bottom:56.25%; height:0;">
+            <iframe src="https://www.youtube.com/embed/${extractYT(v.url)}" style="position:absolute;left:0;top:0;width:100%;height:100%;" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="mt-2">
+            <strong>${v.title}</strong>
+            <div class="muted mt-1 small">${v.url}</div>
+            <div class="mt-2 d-flex gap-2">
+              <button class="btn btn-sm btn-cta" onclick="showYT('${v.url}','${v.title}')">Tomosha qilish</button>
+              <a class="btn btn-sm btn-outline-secondary" href="${v.url}" target="_blank">YouTube sahifasi</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Initialize rendering
+  renderYT();
+</script>
+
+
 
   <!-- FOOTER -->
   <footer class="bg-dark text-light py-5">
@@ -626,7 +725,9 @@
     }
 
     function loginAdmin(event) {
-      event.preventDefault();
+      event.preventDe
+
+fault();
       const password = document.getElementById('adminPassword').value;
       
       if (password === ADMIN_PASSWORD) {
@@ -712,9 +813,9 @@
     }
 
     // CERTIFICATES MANAGEMENT SYSTEM
-    let certificates = JSON.parse(localStorage.getItem('khivaMathCertificates')) || [];
+    let certificates = JSON.parse(localStorage.getItem('khivaMathCertificates')) ;
 
-    // Sample initial certificates
+// Sample initial certificates
     const initialCertificates = [
       { id: 1, name: 'DILNURA', lastName: 'MAMATSAPOYEVA', grade: 'B+', percentage: 92.6, image: 'Dilnura.jpg' },
       { id: 2, name: 'JASURBEK', lastName: 'KARIMOV', grade: 'B+', percentage: 98.77, image: 'Jasurbek.jpg' },
@@ -770,7 +871,7 @@
         `).join('');
       }
 
-      if (adminList && checkAdminAuth()) {
+if (adminList && checkAdminAuth()) {
         adminList.innerHTML = certificates.map(cert => `
           <div class="col-12">
             <div class="card-modern d-flex justify-content-between align-items-center">
